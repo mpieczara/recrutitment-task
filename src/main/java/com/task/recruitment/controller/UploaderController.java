@@ -20,10 +20,8 @@ public class UploaderController {
 
     @PostMapping("/upload-file")
     public ResponseEntity<String> uploadDataFile(@RequestParam("file") MultipartFile file) {
-        if(FileUtil.hasCorrectFormat(file)) {
             uploaderService.saveCSVFile(file);
             return ResponseEntity.status(HttpStatus.OK).body("Data added successfully");
-        }
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Wrong file format");
+
     }
 }
